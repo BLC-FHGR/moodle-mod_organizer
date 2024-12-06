@@ -2163,6 +2163,15 @@ function organizer_slot_commands($slotid, $params, $grades) {
         );
     }
 
+	// EXPORT ICS.
+	$actionurl = new moodle_url(
+			'/mod/organizer/slots_export.php',
+			array('id' => $params['id'], 'slot' => $slotid, 'mode' => $params['mode'])
+	);
+	$outstr .= \html_writer::link($actionurl, organizer_get_fa_icon(
+			"fa fa-calendar fa-fw", get_string('btn_calendarsingle', 'organizer'))
+	);
+
     return $outstr;
 }
 
