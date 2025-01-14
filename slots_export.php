@@ -80,7 +80,6 @@ function export_ics_file($slot, $activityname, $activitydescription) {
 
     // Output ICS data
     echo $icsContent;
-    exit;
 }
 
 function escape_ical_text($text) {
@@ -142,9 +141,18 @@ require_login($course, false, $cm);
 $activity = $DB->get_record('organizer', ['id' => $cm->instance], '*', MUST_EXIST);
 $activity_description = format_module_intro('organizer', $activity, $cm->id);
 
-// Get the slot
-$slotid = optional_param('slot', null, PARAM_INT);
-$slot = $DB->get_record('organizer_slots', ['id' => $slotid], '*', MUST_EXIST);
+// Get the slots
+$slot = optional_param('slot', null, PARAM_INT);
+$slots = organizer_get_param_slots();
+if (!is_null($slot)) {
+    $slots = array($slot);
+}
 
-// Export the ICS file for the slot
-export_ics_file($slot, $cm->name, $activity_description);
+foreach ($slots as $slot)
+{
+    $slot = $DB->get_record('organizer_slots', ['id' => $slot], '*', MUST_EXIST);
+
+    // Export the ICS file for the slot
+    export_ics_file($slot, $cm->name, $activity_description);
+}
+exit;
