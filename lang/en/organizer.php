@@ -33,6 +33,7 @@ $string['absolutedeadline_help'] = 'Check this to define the time after which no
 $string['actionlink_delete'] = 'delete';
 $string['actionlink_edit'] = 'edit';
 $string['actionlink_eval'] = 'grade';
+$string['actionlink_export'] = 'export';
 $string['actionlink_print'] = 'print';
 $string['actions'] = 'Action';
 $string['actions_help'] = 'Action to take.';

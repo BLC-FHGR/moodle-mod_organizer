@@ -107,6 +107,10 @@ if ($bulkaction) {
                 require_capability('mod/organizer:evalslots', $context);
                 $redirecturl = new moodle_url('/mod/organizer/slots_eval.php',
                     array('id' => $cm->id, 'mode' => $mode, 'slots' => $slotids));
+            break;
+            case 'export':
+                $redirecturl = new moodle_url('/mod/organizer/slots_export.php',
+                    array('id' => $cm->id, 'mode' => $mode, 'slots' => $slotids));
         }
     }
     redirect($redirecturl);

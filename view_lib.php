@@ -310,6 +310,7 @@ function organizer_generate_actionlink_bar($context, $organizerexpired, $organiz
     if (has_capability("mod/organizer:evalslots", $context, null, true) && $organizer->grade) {
         $actions['eval'] = get_string('actionlink_eval', 'organizer');
     }
+    $actions['export'] = get_string('actionlink_export', 'organizer');
 
     $output .= html_writer::select(
         $actions, 'bulkaction', array('edit' => get_string('actionlink_edit', 'organizer')), null,
